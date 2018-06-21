@@ -1,95 +1,93 @@
 package com.hirain.pojo;
 
-import java.util.Date;
-
 public class MonthPlan {
-    private Long id;
+	private Long id;
 
-    private Long userid;
+	private Long userid;
 
-    private String projectname;
+	private String projectname;
 
-    private String messioncontent;
+	private String messioncontent;
 
-    private String messionstate;
+	private String messionstate;
 
-    private String messionprogress;
+	private String messionprogress;
 
-    private String deadline;
+	private String deadline;
 
-    private String accomplishtime;
+	private String accomplishtime;
 
-    private Date date;
+	private String date;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getUserid() {
-        return userid;
-    }
+	public Long getUserid() {
+		return userid;
+	}
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
-    }
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
 
-    public String getProjectname() {
-        return projectname;
-    }
+	public String getProjectname() {
+		return projectname;
+	}
 
-    public void setProjectname(String projectname) {
-        this.projectname = projectname == null ? null : projectname.trim();
-    }
+	public void setProjectname(String projectname) {
+		this.projectname = projectname == null ? null : projectname.trim();
+	}
 
-    public String getMessioncontent() {
-        return messioncontent;
-    }
+	public String getMessioncontent() {
+		return messioncontent;
+	}
 
-    public void setMessioncontent(String messioncontent) {
-        this.messioncontent = messioncontent == null ? null : messioncontent.trim();
-    }
+	public void setMessioncontent(String messioncontent) {
+		this.messioncontent = messioncontent == null ? null : messioncontent.trim();
+	}
 
-    public String getMessionstate() {
-        return messionstate;
-    }
+	public String getMessionstate() {
+		return messionstate;
+	}
 
-    public void setMessionstate(String messionstate) {
-        this.messionstate = messionstate == null ? null : messionstate.trim();
-    }
+	public void setMessionstate(String messionstate) {
+		this.messionstate = messionstate == null ? null : messionstate.trim();
+	}
 
-    public String getMessionprogress() {
-        return messionprogress;
-    }
+	public String getMessionprogress() {
+		return messionprogress;
+	}
 
-    public void setMessionprogress(String messionprogress) {
-        this.messionprogress = messionprogress == null ? null : messionprogress.trim();
-    }
+	public void setMessionprogress(String messionprogress) {
+		this.messionprogress = messionprogress == null ? null : messionprogress.trim();
+	}
 
-    public String getDeadline() {
-        return deadline;
-    }
+	public String getDeadline() {
+		return deadline;
+	}
 
-    public void setDeadline(String deadline) {
-        this.deadline = deadline == null ? null : deadline.trim();
-    }
+	public void setDeadline(String deadline) {
+		this.deadline = deadline == null ? null : deadline.trim();
+	}
 
-    public String getAccomplishtime() {
-        return accomplishtime;
-    }
+	public String getAccomplishtime() {
+		return accomplishtime;
+	}
 
-    public void setAccomplishtime(String accomplishtime) {
-        this.accomplishtime = accomplishtime == null ? null : accomplishtime.trim();
-    }
+	public void setAccomplishtime(String accomplishtime) {
+		this.accomplishtime = accomplishtime == null ? null : accomplishtime.trim();
+	}
 
-    public Date getDate() {
-        return date;
-    }
+	public String getDate() {
+		return date;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public void setDate(String date) {
+		this.date = date;
+	}
 }

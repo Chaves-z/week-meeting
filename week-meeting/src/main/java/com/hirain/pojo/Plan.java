@@ -1,35 +1,63 @@
 package com.hirain.pojo;
 
-import java.util.Date;
-
 public class Plan {
-    private Long id;
+	private Long id;
 
-    private Long userid;
+	private Long userid;
 
-    private Date date;
+	private String date;
 
-    public Long getId() {
-        return id;
-    }
+	private String lastweek;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private String currentweek;
 
-    public Long getUserid() {
-        return userid;
-    }
+	private String problem;
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Date getDate() {
-        return date;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getLastweek() {
+		return lastweek;
+	}
+
+	public void setLastweek(String lastweek) {
+		this.lastweek = lastweek == null ? null : lastweek.trim();
+	}
+
+	public String getCurrentweek() {
+		return currentweek;
+	}
+
+	public void setCurrentweek(String currentweek) {
+		this.currentweek = currentweek == null ? null : currentweek.trim();
+	}
+
+	public String getProblem() {
+		return problem;
+	}
+
+	public void setProblem(String problem) {
+		this.problem = problem == null ? null : problem.trim();
+	}
 }

@@ -22,4 +22,7 @@ public interface UserMapper {
 	int updateByPrimaryKeySelective(User record);
 
 	int updateByPrimaryKey(User record);
+
+	@Select("select * from user where userName=#{username}")
+	User selectByUserName(String username);
 }

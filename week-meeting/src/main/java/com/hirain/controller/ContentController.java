@@ -1,6 +1,5 @@
 package com.hirain.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
@@ -28,23 +27,37 @@ public class ContentController {
 	@Autowired
 	ContentService contentService;
 
-	@RequestMapping(value = "/test")
+	@RequestMapping(value = "/getUsers")
 	@ResponseBody
 	public List<User> selectAllUser() {
 
 		return userService.selectAll();
 	}
 
+	@RequestMapping(value = "/getUser")
+	@ResponseBody
+	public User selectUser() {
+
+		return null;
+	}
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/save")
 	@ResponseBody
-	public Result save(HttpServletRequest request, @RequestBody String param) throws UnsupportedEncodingException {
+	public Result save(HttpServletRequest request, @RequestBody String param) {
 
-		Map<String, Object> planMap = (Map<String, Object>) ConvertJson.convertJsonToMap(URLDecoder.decode(param, "utf-8"));
-		Boolean save = contentService.save(planMap);
 		Result result = new Result();
-		result.setCode(200);
-		result.setData(save);
+		Map<String, Object> planMap;
+		try {
+			planMap = (Map<String, Object>) ConvertJson.convertJsonToMap(URLDecoder.decode(param, "utf-8"));
+			Boolean save = contentService.save(planMap);
+			result.setStatus(200);
+			result.setData(save);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.setStatus(500);
+			result.setMsg(e.getMessage());
+		}
 		return result;
 	}
 }
