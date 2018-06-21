@@ -6,19 +6,25 @@ $(function() {
 		idField : 'itemid',
 		url : '',
 		columns : [ [ {
-			field : 'itemid',
+			field : 'userid',
+			hidden : true
+		}, {
+			field : 'date',
+			hidden : true
+		}, {
+			field : 'projectname',
 			title : '项目名',
-			width : 260,
+			width : 205,
 			align : 'center',
 			editor : 'text'
 		}, {
-			field : 'itemid',
+			field : 'messioncontent',
 			title : '任务内容',
 			align : 'center',
-			width : 260,
+			width : 240,
 			editor : 'text'
 		}, {
-			field : 'productid',
+			field : 'messionstate',
 			title : '任务状态',
 			align : 'center',
 			width : 80,
@@ -39,23 +45,29 @@ $(function() {
 				}
 			}
 		}, {
-			field : 'listprice',
+			field : 'messionprogress',
 			title : '任务进度',
 			align : 'center',
 			width : 80,
 			editor : 'text'
 		}, {
-			field : 'unitcost',
+			field : 'deadline',
 			title : '时间节点',
 			align : 'center',
 			width : 80,
 			editor : 'text'
 		}, {
-			field : 'attr1',
+			field : 'accomplishtime',
 			title : '实际完成时间',
 			align : 'center',
 			width : 80,
 			editor : 'text'
+		},
+		{field:'action',title:'Action',width:80,align:'center',
+			formatter:function(value,row,index){
+					var d = '<a href="#" onclick="deleterow(this)">Delete</a>';
+					return d;
+			}
 		}
 
 		] ],
@@ -74,7 +86,7 @@ $(function() {
 	});
 });
 function updateActions(index) {
-	$('#tt').datagrid('updateRow', {
+	$('#month_plan').datagrid('updateRow', {
 		index : index,
 		row : {}
 	});

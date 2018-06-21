@@ -18,91 +18,10 @@
 		<script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
 		
 		<script type="text/javascript" charset="utf-8" src="/js/mission_type.js"></script>
-	 <!-- 	<script type="text/javascript" charset="utf-8" src="/js/methord.js"></script>  -->
+	  	<script type="text/javascript" charset="utf-8" src="/js/methord.js"></script>
 		<script type="text/javascript" charset="utf-8" src="/js/combox.js"></script>
 		<script type="text/javascript" charset="utf-8" src="/js/datagrid.js"></script>
 		<link type="text/css" rel="stylesheet" href="/css/all.css" />
- 		<script type="text/javascript" charset="utf-8" >
- 		function getRowIndex(target) {
- 			var tr = $(target).closest('tr.datagrid-row');
- 			return parseInt(tr.amonth_planr('datagrid-row-index'));
- 		}
-
- 		function editrow(target) {
- 			$('#month_plan').datagrid('beginEdit', getRowIndex(target));
- 		}
-
- 		function deleterow(target) {
- 			$.messager.confirm('Confirm', 'Are you sure?', function(r) {
- 				if (r) {
- 					$('#month_plan').datagrid('deleteRow', getRowIndex(target));
- 				}
- 			});
- 		}
-
- 		function saverow(target) {
- 			$('#month_plan').datagrid('endEdit', getRowIndex(target));
- 		}
-
- 		function cancelrow(target) {
- 			$('#month_plan').datagrid('cancelEdit', getRowIndex(target));
- 		}
- 		var index = 0;
-
- 		function insert() {
- 			$('#month_plan').datagrid('appendRow', {});
- 			$('#month_plan').datagrid('beginEdit', index);
- 			index++;
- 		}
- 		function save() {
- 			
- 		    var param = getSubmitData();
- 		    if (param == ""){
- 		        return;
- 		    } else {
- 		        if(param!=undefined){
- 		        $.ajax({
- 		            type:'post',
- 		            data:(JSON.stringify(param)),
- 		            url:'save',
- 		            success:function(rdata){
- 		                $.messager.alert("成功",rdata.code);
- 		             
- 		            },
- 		            error: function(rdata){
- 		                $.messager.alert("错误","数据传输错误，请重新尝试。");
- 		            }       
- 		        });
- 		    }
- 		    }
- 		}
-
- 		function getSubmitData(){
- 		    var arr = [];
- 		    var nodes = $('#month_plan').datagrid('getRows');
- 		    if(nodes){
- 		        for(var i=0;i<nodes.length;i++){
- 		            var node = nodes[i];
- 		            arr.push(node);
- 		        }
- 		    }
- 		    var lastWeek = $("#last_week").val();
- 		    var currentWeek = $('#current_week').val();
- 		    var problem = $('#problem').val();
- 		   
- 		  
- 		    var sd ={
- 		        userId:1,
- 		        lastWeek:lastWeek,
- 		        currentWeek:currentWeek,
- 		        monthPlan:arr,
- 		        problem:problem
- 		    }
- 		    return sd;
- 		}
-
-		</script>  
-		
 	</head>
 
 	<body data-spy="scroll" data-target="#myScrollspy">
@@ -114,7 +33,7 @@
 
 			<div class="row">
 				<div class="col-xs-3" id="myScrollspy">
-					<ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+					<ul id="leftNavigation" class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
 						<li class="active">
 							<a href="#section-1">上周工作</a>
 						</li>
@@ -132,23 +51,23 @@
 							<a ></a>	
 						</li>
 						<li>
-								<input id="cc"  class="easyui-combobox" ></input>
+							<input id="cc"  class="easyui-combobox" ></input>
 						</li>
 						<li>
-								<button id="save"type="button" class="btn btn-primary" onclick="save()">保存</button>
+							<button id="save"type="button" class="btn btn-primary" onclick="save()">保存</button>
 						</li>
 
 					</ul>
 
 				</div>
 				<div class="col-xs-9">
-					<ul class="nav nav-pills nav-justified">
+					<ul class="nav nav-pills nav-justified" id="topNavigation">
 					<!-- class="active" -->
 						<li >
 							<a href="#"><</a>
 						</li>
 						<li >
-							<a href="#">周一</a>
+							<a href="#" onclick="chooseDate()">周一</a>
 						</li>
 						<li>
 							<a href="#">周二</a>

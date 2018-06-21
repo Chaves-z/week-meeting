@@ -1,9 +1,8 @@
 
-function getRowIndex(target) {
+function getRowIndex(target){
 	var tr = $(target).closest('tr.datagrid-row');
-	return parseInt(tr.amonth_planr('datagrid-row-index'));
+	return parseInt(tr.attr('datagrid-row-index'));
 }
-
 function editrow(target) {
 	$('#month_plan').datagrid('beginEdit', getRowIndex(target));
 }
@@ -26,13 +25,12 @@ function cancelrow(target) {
 var index = 0;
 
 function insert() {
-	 $.messager.alert("成功","保存成功");
 	$('#month_plan').datagrid('appendRow', {});
 	$('#month_plan').datagrid('beginEdit', index);
 	index++;
 }
+
 function save() {
-	
     var param = getSubmitData();
     if (param == ""){
         return;
@@ -40,11 +38,13 @@ function save() {
         if(param!=undefined){
         $.ajax({
             type:'post',
-            data:specialCharacterReplace(JSON.stringify(param)),
+            data:(JSON.stringify(param)),
             url:'save',
             success:function(rdata){
-                $.messager.alert("成功","保存成功");
-             
+                $.messager.alert("成功",rdata.code);
+             for(var i=0;i<index;i++){
+            	 $('#month_plan').datagrid('beginEdit', i);
+             }
             },
             error: function(rdata){
                 $.messager.alert("错误","数据传输错误，请重新尝试。");
@@ -59,6 +59,7 @@ function getSubmitData(){
     var nodes = $('#month_plan').datagrid('getRows');
     if(nodes){
         for(var i=0;i<nodes.length;i++){
+        	$('#month_plan').datagrid('endEdit', i);
             var node = nodes[i];
             arr.push(node);
         }
